@@ -1,0 +1,49 @@
+<%= form_tag feeds_path, :method => 'get' do %> 
+
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :text => nil %>
+  </p>
+
+<% end %>
+
+
+<h1>Listing </h1>
+
+         <td><%= link_to "Sign up", new_user_registration_path %></td> 
+         <br>
+          <td><%= link_to "Login ", new_user_session_path %></td> 
+          <br>
+           <td><%= link_to "Sign out", destroy_user_session_path, method: :delete %></td>
+         
+  
+  <table>
+
+     <tr>
+        <th>Text</th>
+        <th>Image</th>
+        <th>Permission/th>
+     </tr>
+
+          <%= link_to 'New Feed', new_feed_path%>
+ <% @feeds.each do |feed| %>
+      <tr>
+     
+         <td><%= feed.text %></td>
+         <td><%= image_tag feed.image %></td>
+         <td><%= feed.permission %></td>
+         <td><%= link_to 'Bookmark' , bookmarks_index_path(feed) %></td>
+    
+     
+         <br>
+        
+
+      </tr>
+<% end %>
+
+  </table>
+
+
+
+      <h1>Hello, Rails!</h1>
+     

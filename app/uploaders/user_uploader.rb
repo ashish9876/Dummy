@@ -1,0 +1,1 @@
+class UserImageUploader < ImageUploader; end 

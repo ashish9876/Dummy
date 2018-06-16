@@ -10,6 +10,24 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require_tree
+//= require jquery
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+ 
+
+//= require jquery_ujs
+
+ 
+$(function() {
+  $(".friend-search-input").keyup(function() {
+		keyword = $(this).val();
+	 	$.ajax({
+	    type: "GET",
+	    url: "/friendships/search",
+	    data: {keyword: keyword},
+	    dataType: "js"
+	   
+	  });
+  });
+});

@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
-  # devise_for :users
+ mount S3Relay::Engine => "/s3_relay"
+	root "feeds#index"
+	devise_for :users
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	resources :friendships, only: [:index] do
+		get :search, on: :collection
+	end
 
-root "welcome#index"
-devise_for :users
+
+	resources :bookmarks, only: [:index] 
+	
+	resources :feeds do 
+		resources  :bookmarks, only: [:create, :destroy]
+	end 
+
+	resources :users do 
+		resources  :friendships, only: [:create, :destroy]
+	end
 
 end

@@ -1,0 +1,13 @@
+<li>
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="avatar">
+      	<%= image_tag friend.image, class: "img-circle img-no-padding img-responsive",  alt: "Friend Image" %>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <b><a href="#"><%= friend.first_name %> <%= friend.last_name %></a></b> 
+      <span class="timeago" ><%= friend.email %></span>
+    </div>
+  </div>
+</li>

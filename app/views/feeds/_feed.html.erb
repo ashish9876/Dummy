@@ -1,0 +1,29 @@
+<% feed_user  = feed.user %>
+<% if feed_user.present? %>
+  <div class="box box-widget">
+    <div class="box-header with-border">
+      <div class="user-block">
+        <%= image_tag feed_user.image, class: "img-circle",  alt: "User Image" %>
+        <span class="username"><a href="#"><%= feed_user.first_name%></a></span>
+        <span class="description">Shared publicly - <%= feed.created_at.to_date %></span>
+      </div>
+    </div>
+    <div class="box-body" style="display: block;">
+      <%= image_tag feed.image, class: "img-responsive show-in-modal", alt: "Photo" %>
+      <p>I took this photo this morning. What do you guys think?</p>
+      <% if current_user.present? %>
+        <% bookmark = current_user.bookmarks.find_by(feed_id: feed.id) %>
+        <% if bookmark.present? %>
+          <%= link_to feed_bookmark_path(feed, bookmark), method: :delete, class: "btn btn-default btn-xs" do %>
+            <i class="fa fa-thumbs-o-up"></i> UnLike
+          <% end %> 
+        <% else %>
+          <%= link_to feed_bookmarks_path(feed), method: :post, class: "btn btn-default btn-xs" do %>
+            <i class="fa fa-thumbs-o-up"></i> Like
+          <% end %> 
+        <% end %>  
+      <% end %>
+      <span class="pull-right text-muted"><%= feed.bookmarks_count %> likes </span>
+    </div>
+  </div>
+<% end %>

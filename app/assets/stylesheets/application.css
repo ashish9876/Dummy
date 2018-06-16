@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * This is a manifest file that'll be compiled into applicatione all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
@@ -10,6 +10,22 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require bootstrap.min
+ *= require font-awesome.min
+ *= require animate.min
+ *= require timeline
+ *= require cover
+ *= require forms
+ *= require buttons
  */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+ #image_id {
+  margin: 4px;
+height: 59px;
+width: 75px;
+}

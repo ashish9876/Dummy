@@ -1,0 +1,18 @@
+<div class="box profile-info n-border-top">
+	<%= form_for @feeds.new do |f|%>
+
+  <div class="field">
+     <%= f.text_area :text ,  class: "form-control input-lg p-text-area",placeholder: "Whats in your mind today?"%>
+  </div>
+
+  <div class="box-footer box-form">
+    <ul><li  style =" list-style-type: none;">
+   <div class="field">
+      <%= f.file_field :image %>
+   </div>
+   </li>
+
+  <li style =" list-style-type: none;"><%= f.submit "Post" ,class: "btn btn-azure pull-right"  %></li></ul>
+  </div>
+  <% end %>
+</div>

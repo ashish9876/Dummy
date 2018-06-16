@@ -1,0 +1,1 @@
+class FeedImageUploader < ImageUploader; end 

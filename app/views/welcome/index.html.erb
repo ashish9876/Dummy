@@ -1,22 +1,29 @@
-  <h1>Welcome</h1>
+<h1>Welcome</h1>
 
-      <div id="user_nav">
-  <% if user_signed_in? %>
-       Signed in as <%= current_user.email %>
+   <% if user_signed_in? %>
+         Signed in as <%= current_user.email %>
       <br> First Name
-       <%= current_user.first_name %>. 
-       <br> Last Name
-       <%= current_user.last_name %>
-       <br> DOB
-          <%= current_user.dob %>
+         <%= current_user.first_name %>. 
+      <br> Last Name
+         <%= current_user.last_name %>
+      <br> DOB
+         <%= current_user.dob %>
+      <br> <%=image_tag current_user.image%>
+         <%= link_to "Feeds",   new_feed_path %>
+                     
+          
        <br>
         Not you?
 
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
    
-       <%= link_to 'Edit',edit_user_registration_path %>
+        <%= link_to 'Edit',edit_user_registration_path %>
 
   <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+      <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> 
+      <br>
+         <%= link_to "Feeds",   new_feed_path %>
+       <br>
+         <%= link_to "Friends",   new_friend_path %>
      <% end %>
   </div>

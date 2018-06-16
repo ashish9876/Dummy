@@ -1,0 +1,184 @@
+
+<body class="animated fadeIn">
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-white navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><b>DayDay</b></a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+          <li>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete ,:notice =>"sign out Successfully"%>
+          </li>
+          <%else  %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Login ", new_user_session_path %></li>
+          <%end%>
+         
+      </ul>
+    </div>
+    </div>
+  </nav>
+  <!-- Begin page content -->
+  <div class="container page-content ">
+    <div class="row">
+      <!-- left links -->
+      <div class="col-md-3">
+        <div class="profile-nav">
+          <div class="widget">
+            <div class="widget-body">
+              <div class="user-heading round">
+                <a href="#">
+                  <% if user_signed_in? %>
+                  <div>
+                    <%= image_tag current_user.image %>
+                    <h1><%= current_user.first_name %></h1>
+                  </div>
+                  <% end %>  
+                </a>
+              </div>
+              <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"> <i class="fa fa-user"></i> News feed</a></li>
+                <li>
+                  <a href="#"> 
+                  <i class="fa fa-envelope"></i> Messages 
+                  <span class="label label-info pull-right r-activity">9</span>
+                  </a>
+                </li>
+                <li><a href="#"> <i class="fa fa-calendar"></i> Events</a></li>
+                <li><a href="#"> <i class="fa fa-image"></i> Photos</a></li>
+                <li><a href="#"> <i class="fa fa-share"></i> Browse</a></li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-floppy-o"></i> 
+                <li> <%= link_to "New Feed", new_feed_path %> </li>
+               
+
+                Saved</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-body">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#"> <i class="fa fa-globe"></i> Pages</a></li>
+                <li><a href="#"> <i class="fa fa-gamepad"></i> Games</a></li>
+                <li><a href="#"> <i class="fa fa-puzzle-piece"></i> Ads</a></li>
+                <li><a href="#"> <i class="fa fa-home"></i> Markerplace</a></li>
+                <li><a href="#"> <i class="fa fa-users"></i> Groups</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <!-- left posts-->
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <!-- post state form -->
+                <div class="box profile-info n-border-top">
+                  <form>
+                    <textarea class="form-control input-lg p-text-area" rows="2" placeholder="Whats in your mind today?"></textarea>
+                  </form>
+                  <div class="box-footer box-form">
+                    <a href="#" class="btn btn-azure pull-right">
+                    <i class="fa fa-refresh"></i>
+                    Load more
+                    </a>
+                    <a href="#" class="btn btn-azure btn-block"><i class="fa fa-user-plus"></i> Follow</a>
+                    <button type="button" class="btn btn-default center-block"><i class="fa fa-refresh"></i> Load more activities</button>
+                    <a href="#" class="btn btn-azure">
+                    <i class="fa fa-envelope"></i>
+                    Send message
+                    </a>
+                    <button type="button" class="btn btn-azure pull-right">Post</button>
+                    <ul class="nav nav-pills">
+                      <li><a href="#"><i class="fa fa-map-marker"></i></a></li>
+                      <li><a href="#"><i class="fa fa-camera"></i></a></li>
+                      <li><a href="#"><i class=" fa fa-film"></i></a></li>
+                      <li><a href="#"><i class="fa fa-microphone"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- end post state form -->
+                <!--   posts -->
+                <div class="box box-widget">
+                  <div class="box-header with-border">
+                    <div class="user-block">
+                      <% if user_signed_in? %>
+                      <div>
+                      <br> 
+                  
+                         <%= audio_tag(current_user.image ,controls: true) %>
+                      
+                        <h5><%= current_user.first_name %></h5>
+                        <h5><%= current_user.created_at.to_s %></h5>
+                      </div>
+                      <% end %>  
+                    </div>
+                  </div>
+                  <div class="box-body" style="display: block;">
+                    <h1>
+                    <%= image_tag @feed.image %>
+                    <%= @feed.text %>
+                    <h1>
+           
+                  </div>
+                  <div class="box-footer box-comments" style="display: block;">
+                    <div class="box-comment">
+                    </div>
+                  </div>
+                  <div class="box-comment">
+                    <!-- <img class="img-circle img-sm" src="./assets/guy-5.jpg" alt="User Image"> -->
+                    <div class="comment-text">
+                      <span class="username">
+                      Luna Stark
+                      <span class="text-muted pull-right">8:03 PM Today</span>
+                      </span>
+                      It is a long established fact that a reader will be distracted
+                      by the readable content of a page when looking at its layout.
+                    </div>
+                  </div>
+                </div>
+                <div class="box-footer" style="display: block;">
+                  <form action="#" method="post">
+                    <!-- <img class="img-responsive img-circle img-sm" src="./assets/guy-5.jpg" alt="Alt Text"> -->
+                    <div class="img-push">
+                      <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!--  end posts-->
+            </div>
+          </div>
+        </div>
+        <!-- end left posts-->
+      </div>
+    </div>
+    <!-- end  center posts -->
+    <!-- right posts -->
+    <div class="col-md-3">
+      <!-- End people yout may know --> 
+    </div>
+    <!-- end right posts -->
+  </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted"> Copyright &copy; Company - All rights reserved </p>
+    </div>
+  </footer>
+</body>
+</html>
+
